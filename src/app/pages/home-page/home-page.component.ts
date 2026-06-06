@@ -7,10 +7,10 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import {ActivatedRoute, RouterLink} from '@angular/router';
-import {gsap} from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
-import {MarqueComponent} from '../../components/marque/marque.component';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MarqueComponent } from '../../components/marque/marque.component';
 
 interface CompanyCard {
   title: string;
@@ -46,7 +46,7 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent implements AfterViewInit, OnDestroy {
-  constructor(private readonly route: ActivatedRoute) {}
+  constructor(private readonly route: ActivatedRoute) { }
 
   @ViewChild('companySection')
   companySection?: ElementRef<HTMLElement>;
@@ -237,7 +237,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
       this.companyEntranceTimeline
         .fromTo(
           animatedElements,
-          {y: 50, opacity: 0},
+          { y: 50, opacity: 0 },
           {
             y: 0,
             opacity: 1,
@@ -248,7 +248,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
         )
         .fromTo(
           companyImageElement,
-          {scale: 0.92, opacity: 0},
+          { scale: 0.92, opacity: 0 },
           {
             scale: 1,
             opacity: 1,
@@ -259,19 +259,19 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
         );
     }
 
-    const fragment = this.route.snapshot.fragment;
-
-    if (fragment) {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => this.scrollToSection(fragment));
-      });
-    }
-
     this.syncJourneyAccordionState();
 
     this.setupJourneyEntranceAnimation();
     this.setupSkillsEntranceAnimation();
     this.setupProjectEntranceAnimation();
+
+    const fragment = this.route.snapshot.fragment;
+
+    if (fragment) {
+      requestAnimationFrame(() => {
+        this.scrollToSection(fragment);
+      });
+    }
   }
 
   ngOnDestroy() {
@@ -319,7 +319,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
     if (animatedChildren.length > 0) {
       gsap.fromTo(
         animatedChildren,
-        {y: 18, opacity: 0.65},
+        { y: 18, opacity: 0.65 },
         {
           y: 0,
           opacity: 1,
@@ -334,7 +334,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
 
     gsap.fromTo(
       sectionElement,
-      {y: 18, opacity: 0.65},
+      { y: 18, opacity: 0.65 },
       {
         y: 0,
         opacity: 1,
@@ -534,7 +534,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
     this.companyTransitionTimeline
       .fromTo(
         [titleElement, descriptionElement],
-        {y: 18, opacity: 0},
+        { y: 18, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -545,7 +545,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
       )
       .fromTo(
         imageElement,
-        {scale: 0.96, opacity: 0},
+        { scale: 0.96, opacity: 0 },
         {
           scale: 1,
           opacity: 1,

@@ -1,0 +1,10 @@
+.journey-body {
+  overflow: hidden;
+  will-change: height, opacity;
+}
+
+.journey-body[data-collapsed='true'] {
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}

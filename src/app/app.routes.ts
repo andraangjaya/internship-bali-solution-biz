@@ -5,6 +5,15 @@ export const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',
-  }
+  },
 
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/home-page/home-page.component').then((m) => m.HomePageComponent),
+  },
+
+  {
+    path: 'project',
+    loadComponent: () => import('./pages/project-page/project-page.component').then((m) => m.ProjectPageComponent),
+  },
 ];

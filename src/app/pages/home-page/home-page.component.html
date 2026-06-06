@@ -1,0 +1,147 @@
+<section class="flex flex-col items-center justify-center min-h-screen -translate-y-20 gap-7 scroll-mt-32 px-4">
+  <div class="border-line-default shadow-xs rounded-full px-5 py-2">
+    <span class="font-medium text-primary text-sm sm:text-base lg:text-lg font-figtree text-center">Andra Bakti Angjaya | XI RPL 4 / 04</span>
+  </div>
+  <h1
+    class="text-4xl sm:text-5xl lg:text-7xl text-primary text-center font-bold font-jakarta-sans drop-shadow-xs leading-[1.4] tracking-wide">
+    Praktek Kerja Lapangan
+    <br>
+    <span class="text-secondary">Bali Solution Biz</span>
+  </h1>
+</section>
+
+<section #companySection id="company" class="scroll-mt-32">
+  <app-marque></app-marque>
+  <div class="flex flex-col xl:flex-row gap-10 lg:gap-20 m-6 sm:m-10 lg:m-20">
+    <div class="flex flex-col gap-5">
+      @for (card of companyCards; track $index; let i = $index) {
+        <button
+          (click)="selectCompanyCard(i)"
+          class="company-animate-item text-neutral-700 text-left text-lg sm:text-xl lg:text-2xl font-semibold font-figtree cursor-pointer"
+          [class.text-primary]="companyCardIndex === i"
+        >
+          {{ card.title }}
+        </button>
+        <hr class="company-animate-item">
+      }
+    </div>
+    <div class="company-animate-item flex-1 min-w-0 flex flex-col gap-6 lg:gap-10 lg:mr-10">
+      <span #companyTitle class="text-3xl sm:text-4xl lg:text-5xl text-primary font-figtree font-bold">
+        {{ companyCards[companyCardIndex].title }}
+      </span>
+      <p #companyDescription class="max-w-none text-primary text-sm sm:text-base text-justify leading-[1.9]">
+        {{ companyCards[companyCardIndex].description }}
+      </p>
+    </div>
+    <img
+      #companyImage
+      [src]="companyCards[companyCardIndex].image"
+      class="w-full sm:w-72 lg:w-[400px] h-64 sm:h-72 lg:h-[400px] object-cover rounded-4xl"
+      [alt]="companyCards[companyCardIndex].alt"
+    />
+  </div>
+</section>
+
+<section #journeySection id="journey" class="flex flex-col m-6 sm:m-10 lg:m-20 mt-20 sm:mt-28 lg:mt-40 scroll-mt-32">
+  <div #journeyHeaderRow class="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl text-primary font-bold font-figtree">Journey</h1>
+    <span
+      class="sm:max-w-[350px] text-left sm:text-right text-base sm:text-lg lg:text-xl text-tertiary font-semibold font-figtree">Hal yang dipelajari secara mandiri selama 6 bulan</span>
+  </div>
+  <div class="flex flex-col gap-10 lg:gap-15 m-4 sm:m-8 lg:m-15 mt-12 lg:mt-25">
+    @for (card of journeyCards; track $index; let i = $index) {
+      <div #journeyItem class="flex flex-col gap-6">
+        <button
+          type="button"
+          (click)="selectJourneyCard(i)"
+          class="w-full flex flex-row items-center justify-between gap-4 lg:gap-8 text-left"
+          [attr.aria-expanded]="journeyExpandedIndex === i"
+        >
+          <div class="flex flex-row items-start gap-4 sm:gap-6 lg:gap-10">
+            <span
+              class="text-2xl sm:text-3xl lg:text-4xl hidden sm:block text-primary font-semibold font-figtree">{{ card.number }}</span>
+            <div class="flex flex-col gap-3 lg:gap-5">
+              <span
+                class="text-2xl sm:text-3xl lg:text-4xl text-primary font-semibold font-figtree line-clamp-1 lg:line-clamp-none">{{ card.title }}</span>
+              <div
+                #journeyBody
+                class="journey-body"
+                [attr.data-collapsed]="journeyExpandedIndex === i ? 'false' : 'true'"
+              >
+                <p class="text-base sm:text-lg lg:text-xl text-primary font-figtree leading-relaxed md:leading-[1.9]">
+                  {{ card.description }}
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center rounded-full p-2 bg-tertiary/20">
+              <svg
+                #journeyToggleIcon
+                stroke="currentColor"
+                fill="currentColor"
+                stroke-width="0"
+                viewBox="0 0 448 512"
+                class="text-base md:text-2xl transition-transform duration-300"
+                [class.rotate-45]="journeyExpandedIndex === i"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"></path>
+              </svg>
+            </div>
+          </div>
+        </button>
+      </div>
+    }
+  </div>
+</section>
+
+<section #skillsSection id="skills" class="m-6 sm:m-10 lg:m-20 mt-20 sm:mt-28 lg:mt-40 scroll-mt-32">
+  <div #skillsHeaderRow class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl text-primary font-bold font-figtree">Techs & Skills</h1>
+    <span
+      class="sm:max-w-[500px] text-left sm:text-right text-base sm:text-lg lg:text-xl text-tertiary font-semibold font-figtree">Hal-hal yang saya dapatkan dan gunakan selama PKL untuk pengerjaan project</span>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 mt-10 lg:mt-16">
+    @for (skill of skills; track skill) {
+      <div #skillCard
+           class="flex justify-center rounded-2xl border border-line-default bg-primary/5 px-4 sm:px-5 lg:px-6 py-3 sm:py-4 lg:py-5 transition-transform duration-300 hover:-translate-y-1 hover:bg-primary/10">
+        <span class="text-center text-base sm:text-lg lg:text-xl font-semibold text-primary font-figtree">
+          {{ skill }}
+        </span>
+      </div>
+    }
+  </div>
+</section>
+
+<section #projectSection id="projects" class="m-6 sm:m-10 lg:m-20 mt-20 sm:mt-28 lg:mt-40 scroll-mt-32">
+  <div #projectHeaderRow class="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl text-primary font-bold font-figtree">Projects</h1>
+    <span
+      class="sm:max-w-[400px] text-left sm:text-right text-base sm:text-lg lg:text-xl text-tertiary font-semibold font-figtree">Beberapa projek yang saya kerjakan secara mandiri dan dari perusahaan</span>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 mt-10 lg:mt-20">
+    @for (card of projectCards; track $index) {
+      <div
+        #projectCard
+        class="flex flex-col gap-3 transition-transform duration-300 hover:scale-105 bg-primary/3 rounded-xl p-5 sm:p-7 lg:p-10 cursor-pointer pointer-events-auto"
+        routerLink="/project"
+        [fragment]="card.fragment"
+      >
+        <img [src]="card.image" class="rounded-xl w-full h-full sm:h-full lg:h-full object-cover pointer-events-none"
+             [alt]="card.alt"/>
+        <span
+          class="text-lg sm:text-xl lg:text-2xl font-bold text-primary ml-2 font-jakarta-sans pointer-events-none">{{ card.title }}</span>
+        <div class="flex flex-wrap ml-2 gap-2 sm:gap-3 lg:gap-5">
+          @for (tag of card.tags; track tag) {
+            <div class="flex flex-row items-center bg-neutral-600/30 rounded-4xl px-3 sm:px-4 py-1.5 sm:py-2 gap-2">
+              <div class="size-3 sm:size-4 bg-slate-mid rounded-full"></div>
+              <span class="text-xs sm:text-sm text-primary font-bold font-jakarta-sans">{{ tag }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

@@ -1,1 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-figtree: "Figtree", sans-serif;
+  --font-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+  --animate-marquee: marquee 50s linear infinite;
+  --color-surface-50: #f6f5f8;
+  --color-surface-100: #f0eff5;
+  --color-surface-200: #e8e6f0;
+  --color-surface-300: #e4e1ef;
+  --color-surface-400: #e2eaf2;
+  --color-neutral-600: #c8c8d8;
+  --color-neutral-700: #a8a4c0;
+  --color-neutral-800: #9090a8;
+  --color-neutral-900: #70708a;
+
+  --color-primary: #1a1a2e;
+  --color-secondary: #9090a8;
+  --color-tertiary: #b0b0c8;
+
+  --color-line-subtle: rgba(0, 0, 0, 0.07);
+  --color-line-default: rgba(0, 0, 0, 0.12);
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-white text-primary;
+    background:
+      radial-gradient(ellipse at 30% 40%, var(--color-surface-300) 0%, transparent 55%),
+      radial-gradient(ellipse at 78% 70%, var(--color-surface-400) 0%, transparent 45%),
+      var(--color-surface-50);
+  }
+}
+
+@layer utilities {
+  .bg-hero-gradient {
+    background:
+      radial-gradient(ellipse at 20% 50%, #c7d4f5 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, #c4b5f4 0%, transparent 45%),
+      radial-gradient(ellipse at 60% 80%, #ddd6fe 0%, transparent 40%),
+      var(--color-surface-100);
+  }
+
+  .bg-chalk-veil {
+    background:
+      radial-gradient(ellipse at 30% 40%, var(--color-surface-300) 0%, transparent 55%),
+      radial-gradient(ellipse at 78% 70%, var(--color-surface-400) 0%, transparent 45%),
+      var(--color-surface-50);
+  }
+
+  .bg-slate-mid {
+    background:
+      linear-gradient(135deg, #94a3b8, #475569);
+  }
+
+  .primary {
+    @apply text-primary;
+  }
+
+  .secondary {
+    @apply text-secondary;
+  }
+
+  .tertiary {
+    @apply text-tertiary;
+  }
+
+  .border-line-subtle {
+    @apply border border-line-subtle;
+  }
+
+  .border-line-default {
+    @apply border border-line-default;
+  }
+
+  .card {
+    @apply bg-white rounded-lg border border-line-subtle transition-all duration-200;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .card:hover {
+    @apply border-line-default;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-featured {
+    @apply bg-surface-100 border-2 border-neutral-600 rounded-lg;
+  }
+
+  .card-tinted {
+    @apply bg-surface-200 border border-line-subtle rounded-lg;
+  }
+
+  .btn-primary {
+    @apply px-5 py-2 rounded-full font-bold text-sm bg-neutral-800 text-white transition-all duration-200 hover:bg-neutral-900 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-2 rounded-full font-bold text-sm border-2 border-neutral-800 text-neutral-800 transition-all duration-200 hover:bg-surface-200;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 rounded-full font-semibold text-sm text-neutral-800 transition-all duration-200 hover:bg-surface-100;
+  }
+
+  .divider {
+    @apply border-t border-line-subtle;
+  }
+
+  .hero-title {
+    @apply text-6xl font-bold leading-tight tracking-wide text-primary;
+  }
+
+  .hero-subtitle {
+    @apply text-lg text-secondary font-medium;
+  }
+
+  .tag {
+    @apply inline-block px-3 py-1 text-xs font-semibold rounded-full border border-line-subtle bg-surface-100 text-neutral-800;
+  }
+}

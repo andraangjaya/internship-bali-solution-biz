@@ -5,7 +5,7 @@ import {
   OnDestroy,
   ViewChild,
 } from '@angular/core';
-import {gsap} from 'gsap';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-project-page',
@@ -121,6 +121,7 @@ export class ProjectPageComponent implements AfterViewInit, OnDestroy {
           y: 0,
           scale: 1,
           duration: 1.2,
+          clearProps: 'transform',
         },
         '<0.08'
       )
@@ -131,6 +132,7 @@ export class ProjectPageComponent implements AfterViewInit, OnDestroy {
           y: 0,
           duration: 0.9,
           stagger: 0.12,
+          clearProps: 'transform',
         },
         '<0.12'
       )
@@ -150,6 +152,7 @@ export class ProjectPageComponent implements AfterViewInit, OnDestroy {
           y: 0,
           scale: 1,
           duration: 1.2,
+          clearProps: 'transform',
         },
         '<0.08'
       )
@@ -160,6 +163,7 @@ export class ProjectPageComponent implements AfterViewInit, OnDestroy {
           y: 0,
           duration: 0.9,
           stagger: 0.12,
+          clearProps: 'transform',
         },
         '<0.12'
       );

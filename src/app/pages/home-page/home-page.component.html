@@ -62,7 +62,12 @@
               class="text-2xl sm:text-3xl lg:text-4xl hidden sm:block text-primary font-semibold font-figtree">{{ card.number }}</span>
             <div class="flex flex-col gap-3 lg:gap-5">
               <span
-                class="text-2xl sm:text-3xl lg:text-4xl text-primary font-semibold font-figtree line-clamp-1 lg:line-clamp-none">{{ card.title }}</span>
+                class="text-2xl sm:text-3xl lg:text-4xl text-primary font-semibold font-figtree"
+                [class.line-clamp-1]="journeyExpandedIndex !== i"
+                [class.lg:line-clamp-none]="journeyExpandedIndex === i"
+              >
+                {{ card.title }}
+              </span>
               <div
                 #journeyBody
                 class="journey-body"

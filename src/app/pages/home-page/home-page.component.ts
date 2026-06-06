@@ -457,6 +457,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
               duration: 0.52,
               stagger: 0.26,
               ease: 'power3.out',
+              clearProps: 'transform',
             },
             '-=0.12'
           );
@@ -510,6 +511,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
               scale: 1,
               duration: 0.8,
               stagger: 0.24,
+              clearProps: 'transform',
             },
             '-=0.12'
           );
